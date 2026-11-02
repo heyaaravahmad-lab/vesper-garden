@@ -141,7 +141,7 @@ type State = {
 };
 export const useGarden = create<State>((update) => ({
   plants: starter,
-  mood: "twilight",
+  mood: "dawn",
   ready: false,
   saveError: false,
   add: (title, kind, body, position) => {

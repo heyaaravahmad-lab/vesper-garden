@@ -1,0 +1,13 @@
+# Sanctuary visual revision
+
+The original floating diorama has been replaced with a full-bleed environment. This is layered 2.5D environmental artwork, not a navigable 3D world or a Genshin-equivalent game engine.
+
+The background was created with the built-in ImageGen tool, saved to `public/art/sanctuary.jpg` (1672 × 941). A shader adds localized subtle motion in foliage and water; CSS layers add drifting pollen, sunlight and rain. Interactive plants are procedural botanical SVGs, preserving each saved plant's ID, type, growth, and position. Daybreak is the new default for new gardens; existing gardens keep their chosen mood.
+
+“Just be here” hides and disables the controls, allowing the environment to stand on its own. Escape or Return to the garden restores them. Reduced-motion preferences freeze environmental motion.
+
+## Generation prompt
+
+Use case: stylized-concept. Asset: extremely high quality full screen 16:9 4K environmental artwork for a tranquil interactive garden, no UI or text. Create an exquisite sunlit fantasy garden with the richness of a premium open-world anime game environment, finely detailed painterly naturalism, elegant rather than cartoonish. Camera eye level from a shaded mossy garden terrace looking across a small clear turquoise stream with worn stone stepping stones, flowering meadow in foreground, enormous graceful willow trees with individually articulated delicate drooping leaves framing upper left and right, distant luminous mountains and blue sky. Warm sunshine pours diagonally from upper right, physically convincing dappled light on lush varied grass, thousands of detailed little leaves and wildflowers, translucent luminous foliage, moss on natural boulders, tiny white and lavender blossoms, subtle ancient stone arch partly covered in climbing plants in distance. Deep atmospheric perspective, lovely sunlight, realistic organic terrain continuing beyond frame. Central focal point stream and flower garden, verdant green and warm gold balanced with turquoise. Foreground lower 40 percent is accessible mossy earth, grasses and garden beds with natural open patches between them. Wide cinematic composition, impeccable environmental art direction, polished game concept painting suitable for an expensive desktop wallpaper. NO floating island, NO diorama, NO round ball canopies, NO geometric lowpoly tree, NO borders, NO text, NO people, NO buildings dominating. Landscape 3840x2160.
+
+The tool returned 1672 × 941; the requested size in the prompt is not a claim of delivered 4K resolution. This remains a visual limitation on large 4K monitors. The lighting and scenery are painted into the environment; mood changes are color and atmosphere treatments, not physically relit 3D geometry.

@@ -21,6 +21,7 @@ import {
   Trees,
   Lightbulb,
   Search,
+  Eye,
 } from "lucide-react";
 const GardenScene = React.lazy(() =>
   import("./scene").then((m) => ({ default: m.GardenScene })),
@@ -105,6 +106,7 @@ const kinds: {
   },
 ];
 export default function App() {
+  const [immersive, setImmersive] = useState(false);
   const {
     plants,
     mood,
@@ -188,6 +190,7 @@ export default function App() {
   useEffect(() => {
     function key(e: KeyboardEvent) {
       if (e.key === "Escape") {
+        setImmersive(false);
         close();
         setJournal(false);
         setMoodOpen(false);
@@ -263,14 +266,14 @@ export default function App() {
     }
   }
   return (
-    <main className={`app mood-${mood}`}>
+    <main className={`app mood-${mood} ${immersive ? "immersive" : ""}`}>
       <div className="sky">
         <div className="halo" />
         <div className="moon" />
         <div className="mountain far" />
         <div className="mountain near" />
       </div>
-      <div className="scene">
+      <div className="scene" inert={immersive}>
         <SceneBoundary>
           <React.Suspense
             fallback={<div className="scene-loading">Waking the garden…</div>}
@@ -289,7 +292,13 @@ export default function App() {
           </React.Suspense>
         </SceneBoundary>
       </div>
-      <header>
+      <button
+        className="return-from-reverie"
+        onClick={() => setImmersive(false)}
+      >
+        Return to the garden <span>ESC</span>
+      </button>
+      <header inert={immersive}>
         <a
           className="brand"
           href="#"
@@ -318,6 +327,18 @@ export default function App() {
                 : "Opening your garden…"}
           </span>
           <button
+            aria-label="Just be here"
+            className="reverie-button"
+            onClick={() => {
+              close();
+              setJournal(false);
+              setImmersive(true);
+            }}
+          >
+            <Eye size={16} />
+            <span>Just be here</span>
+          </button>
+          <button
             className="icon-button sound"
             onClick={toggleSound}
             aria-label={sound ? "Mute ambience" : "Play ambience"}
@@ -338,7 +359,7 @@ export default function App() {
           </button>
         </div>
       </header>
-      <section className="intro">
+      <section className="intro" inert={immersive}>
         <div className="eyebrow">
           <span /> A LITTLE WILD. ENTIRELY YOURS.
         </div>
@@ -359,12 +380,12 @@ export default function App() {
           Just a little room to grow.
         </span>
       </section>
-      <div className="garden-caption">
+      <div className="garden-caption" inert={immersive}>
         <span className="caption-line" />
         <span>YOUR GARDEN, IN {moodInfo.label.toUpperCase()}</span>
         <p>{moodInfo.phrase}</p>
       </div>
-      <footer>
+      <footer inert={immersive}>
         <button className="help-button" onClick={() => setHelp(true)}>
           <span>?</span>
           <span>A gentle guide</span>
