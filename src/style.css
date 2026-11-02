@@ -1527,3 +1527,7 @@ footer,
 .living-botanicals {
   transition: opacity 1s;
 }
+
+.intro {
+  animation: none;
+}
